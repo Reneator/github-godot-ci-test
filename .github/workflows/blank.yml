@@ -3,7 +3,7 @@ on: push
 
 env:
   GODOT_VERSION: 3.4.2
-  EXPORT_NAME: test-project
+  EXPORT_NAME: Github Godot Ci Test
 
 jobs:
   export-windows:
