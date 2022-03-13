@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Moving_Icon.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Victory_Screen.gd" type="Script" id=3]
 
 [node name="Victory_Screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
 [node name="Icon" type="TextureRect" parent="."]
 margin_left = 478.0
@@ -39,3 +41,5 @@ margin_top = 80.0
 margin_right = 27.0
 margin_bottom = 100.0
 text = "Replay"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
