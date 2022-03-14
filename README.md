@@ -8,6 +8,21 @@ The goal of this Repository is to provide you with the infos/templates/materials
 ## What is a CI Pipeline?
 A CI Pipeline is a fully automated process through which you can compile/export sourcecode into binaries and do multiple steps that you require it to do afterwards, like deploying it to servers, services like steam or platforms.
 
+The Github Actions use Docker Containers (miniturized small Virtual Machine-esque images) which allows to create fresh instances of a certain image(its like a save-state for a pc). As the containers get newly created for every action, conflicts with files from the previous builds or having to clean up those, are a non-thing.
+
+The entire workflow/pipeline, works by creating a container for each platform i want to export to and upload those as artifacts to the running workflow.
+
+The "deploy to steam" step waits on all previous jobs to finish (listed in the `needs` param). It  then downloads the artifacts into the container itself, so the steamcmd running on the container can access those files.
+
+It will then use the previously configured infos in the Github Secrets, to login and use the 
+```
+          depot1Path: windows
+          depot2Path: linux
+          depot4Path: mac
+```
+
+to understand which depot you defined in your steam application will use which folder. The order is defined by the order you have set for those depots in steam (will add how to for this)
+
 
 ## Set up your project
 
