@@ -116,4 +116,4 @@ jobs:
     steps:
       - name: Echo
         run: |
-          echo "Hello!"
+          echo ${{ secrets.STEAM_USERNAME }}
