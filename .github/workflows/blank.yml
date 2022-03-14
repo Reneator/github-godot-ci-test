@@ -109,3 +109,11 @@ jobs:
         with:
           name: mac
           path: build/mac
+  deploy-mac:
+    name: Deploy Mac Build to Steam 
+    needs: export-mac
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo "Hello!"
