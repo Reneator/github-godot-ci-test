@@ -1,5 +1,9 @@
 name: "godot-ci export"
-on: push
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '*'
 
 env:
   GODOT_VERSION: 3.4.2
