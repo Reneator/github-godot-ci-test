@@ -18,7 +18,14 @@ In your project you need to have to have created the exports you want to use. Th
 used parts of the description from here:
 https://github.com/game-ci/steam-deploy#3-configure-for-deployment
 
+### Add a builder Account
+
+### Use MFA (Multi-factor-authentication) To protect your project
+
 ### Set up your credentials as Secrets in Github
+
+## Set up Steam to work properly
+
 
 
 ## Set up your Github action
@@ -27,14 +34,7 @@ https://github.com/game-ci/steam-deploy#3-configure-for-deployment
 ## Set up github pages for your repository
 
 
-
-
-
 ## How does the process work step by step?
-
-
-
-
 
 
 ## currently researching into these topics:
