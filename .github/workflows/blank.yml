@@ -7,7 +7,7 @@ on:
 
 env:
   GODOT_VERSION: 3.4.2
-  EXPORT_NAME: github-godot-ci-test
+  EXPORT_NAME: godot-ci-test
 
 jobs:
   export-windows:
@@ -16,8 +16,6 @@ jobs:
     container:
       image: barichello/godot-ci:3.4.2
     steps:
-      - name: Echo tag name
-        run: echo ${GITHUB_REF#refs/tags/}
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -128,3 +126,7 @@ jobs:
           configVdf: ${{ secrets.STEAM_CONFIG_VDF}}
           ssfnFileName: ${{ secrets.STEAM_SSFN_FILE_NAME }}
           ssfnFileContents: ${{ secrets.STEAM_SSFN_FILE_CONTENTS }}
+          appId: 1370410
+          buildDescription: ${GITHUB_REF#refs/tags/}
+          rootPath: build
+          releaseBranch: ci-test
