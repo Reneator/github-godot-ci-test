@@ -119,6 +119,12 @@ jobs:
     needs: [export-mac, export-windows, export-linux]
     runs-on: ubuntu-latest
     steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: build
+          path: /build
+      - name: Deploy to Steam
       - uses: game-ci/steam-deploy@v1.1.0
         with:
           username: ${{ secrets.STEAM_USERNAME }}
@@ -128,5 +134,5 @@ jobs:
           ssfnFileContents: ${{ secrets.STEAM_SSFN_FILE_CONTENTS }}
           appId: 1370410
           buildDescription: ${GITHUB_REF#refs/tags/}
-          rootPath: build
+          rootPath: /build
           releaseBranch: ci-test
