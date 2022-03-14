@@ -130,7 +130,7 @@ jobs:
           ssfnFileName: ${{ secrets.STEAM_SSFN_FILE_NAME }}
           ssfnFileContents: ${{ secrets.STEAM_SSFN_FILE_CONTENTS }}
           appId: 1370410
-          buildDescription: ${GITHUB_REF#refs/tags/}
+          buildDescription: ${{GITHUB_REF#refs/tags/}}
           releaseBranch: ci-test
           depot1Path: windows
           depot2Path: linux
