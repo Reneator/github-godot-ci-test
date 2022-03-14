@@ -109,11 +109,16 @@ jobs:
         with:
           name: mac
           path: build/mac
-  deploy-mac:
-    name: Deploy Mac Build to Steam 
-    needs: export-mac
+
+  deployToSteam:
+    name: Deploy to Steam 
+    needs: [export-mac, export-windows, export-linux]
     runs-on: ubuntu-latest
     steps:
-      - name: Echo
-        run: |
-          echo ${{ secrets.STEAM_USERNAME }}
+      - uses: game-ci/steam-deploy@v1.1.0
+        with:
+          username: ${{ secrets.STEAM_USERNAME }}
+          password: ${{ secrets.STEAM_PASSWORD }}
+          configVdf: ${{ secrets.STEAM_CONFIG_VDF}}
+          ssfnFileName: ${{ secrets.STEAM_SSFN_FILE_NAME }}
+          ssfnFileContents: ${{ secrets.STEAM_SSFN_FILE_CONTENTS }}
