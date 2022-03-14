@@ -26,6 +26,7 @@ https://github.com/game-ci/steam-deploy#3-configure-for-deployment
 
 ## Set up Steam to work properly
 
+To deploy to a branch on steam the branch must already exist. The Branch wont be created and you will receive an error-message
 
 
 ## Set up your Github action
@@ -36,6 +37,36 @@ https://github.com/game-ci/steam-deploy#3-configure-for-deployment
 
 ## How does the process work step by step?
 
+## Deploy to different steam branches
+I currently have this working by creating an additional workflow script, copy the content of the other script and change the tag
+
+```
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '*'
+```
+
+to
+
+```
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '{part that signifies to deploy to other branch}*'
+```
+
+Also change the steam-branch to the one you want to use
+
+
+For my personal project i use:
+```
+tags:
+  - 'playtest*'
+```
+Which means whenever i push a tag with playtest, this script gets triggered, but the other does not.
+
+This works for me, because im working on one branch (solo developer) and mostly use tags for releases, but if you work with 
 
 ## currently researching into these topics:
 - Deploy to itch.io
