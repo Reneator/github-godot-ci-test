@@ -16,6 +16,8 @@ jobs:
     container:
       image: barichello/godot-ci:3.4.2
     steps:
+      - name: Echo tag name
+        run: echo ${GITHUB_REF#refs/tags/}
       - name: Checkout
         uses: actions/checkout@v2
         with:
