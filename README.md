@@ -71,3 +71,9 @@ This works for me, because im working on one branch (solo developer) and mostly 
 ## currently researching into these topics:
 - Deploy to itch.io
 - provide different templates, which are pushing to different branches depending on your current branches etc.
+
+## FAQ
+
+### my build fails with "cannot find on path X
+
+The build files are made for projects where your game-project is located in the root of your repository. If not, you will have to change some commands around, switching to the respective project folder.
