@@ -7,7 +7,7 @@ on:
 
 env:
   GODOT_VERSION: 3.4.2
-  EXPORT_NAME: godot-ci-test [CHANGE ME]
+  EXPORT_NAME: godot-ci-test # CHANGE ME
 
 jobs:
   export-windows:
@@ -135,9 +135,9 @@ jobs:
           configVdf: ${{ secrets.STEAM_CONFIG_VDF}}
           ssfnFileName: ${{ secrets.STEAM_SSFN_FILE_NAME }}
           ssfnFileContents: ${{ secrets.STEAM_SSFN_FILE_CONTENTS }}
-          appId: 1370410 [CHANGE ME]
+          appId: 1370410 # CHANGE ME
           buildDescription: ${{ env.RELEASE_VERSION }}
-          releaseBranch: ci-test [CHANGE ME]
+          releaseBranch: ci-test # CHANGE ME
           depot1Path: windows
           depot2Path: linux
           depot4Path: mac
