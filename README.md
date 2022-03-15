@@ -42,6 +42,7 @@ then "set up a workflow yourself":
 
 ![image](https://user-images.githubusercontent.com/24807557/158434226-0f0031b7-15a6-4457-b6ac-a3a9414051c0.png)
 
+(Click to enlargen)
 ![image](https://user-images.githubusercontent.com/24807557/158436148-9546f114-8331-4389-b0af-9e18b96b47c5.png)
 In this view you can now replace the text with the contents of this [File](https://github.com/Reneator/github-godot-ci-test/blob/master/.github/workflows/blank.yml)
 
