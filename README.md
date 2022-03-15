@@ -47,7 +47,7 @@ In this view you can now replace the text with the contents of this [File](https
 
 When you are done press on "commit" on the top right and select the options that fit best for you. You can potentially just click "commit new file"
 
-Try to change/replace the values that have the `[CHANGE ME]` behind them. The rest should then work as is, when you have added the necessary github secrets.
+Try to change/replace the values that have the `#CHANGE ME` commentbehind them. The rest should then work as is, when you have added the necessary github secrets.
 Try not to change anything else unless you know what you are doing.
 
 The way the workflow file is now set up, it will trigger a build whenever you push a tag. You can adapt/change this in the first 6 lines to react to pushes directly, only trigger in specific branches etc. For this you might need to set up multiple files if you for example want to have a different Branch in git push to a different branch in steam. (Im personally doing this via tags)
