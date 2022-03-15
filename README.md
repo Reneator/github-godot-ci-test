@@ -148,7 +148,7 @@ Which means whenever i push a tag with playtest, this script gets triggered, but
 This works for me, because im working on one branch (solo developer) and mostly use tags for releases, but if you work with 
 
 ## currently researching into these topics:
-- Deploy to itch.io
+- Deploy to itch.io (can be done with the currently used github action: https://github.com/abarichello/godot-ci you may just have to expand the action/add a new step)
 - provide different templates, which are pushing to different branches depending on your current branches etc.
 
 
