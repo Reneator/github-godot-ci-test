@@ -1,6 +1,11 @@
 # github-godot-ci-test
 
-This description is heavily WIP
+The github actions utilized in this project are:
+https://github.com/marketplace/actions/godot-ci
+https://github.com/game-ci/steam-deploy
+
+I will try to have all infos on this page and else i will directly point to external sources via link.
+
 
 The goal of this Repository is to provide you with the infos/templates/materials/sources you need to set up your own Git Actions CI Pipeline to deliver your game onto multiple different OS to Steam just by pushing one button
 
@@ -13,6 +18,7 @@ The Github Actions use Docker Containers (miniturized small Virtual Machine-esqu
 ### The rough flow of the github action from this project
 
 The flow is defined in this [File](https://github.com/Reneator/github-godot-ci-test/blob/master/.github/workflows/blank.yml)
+
 
 
 The entire workflow/pipeline, works by creating a container for each platform i want to export to and upload those as artifacts to the running workflow.
