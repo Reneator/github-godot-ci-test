@@ -7,7 +7,7 @@ The github actions utilized in this project are:
 I will try to have all infos on this page and else i will directly point to external sources via link.
 
 
-The goal of this Repository is to provide you with the infos/templates/materials/sources you need to set up your own Git Actions CI Pipeline to deliver your game onto multiple different OS to Steam just by pushing one button
+The goal of this Repository is to provide you with the infos/templates/materials/sources you need to set up your own Git Actions CI Pipeline to deliver your game in Godot onto multiple different OS to Steam just by pushing one button
 
 
 ## What is a CI Pipeline?
