@@ -1,10 +1,8 @@
 # github-godot-ci-test
 
 The github actions utilized in this project are:
-
-https://github.com/marketplace/actions/godot-ci
-
-https://github.com/game-ci/steam-deploy
+- https://github.com/marketplace/actions/godot-ci
+- https://github.com/game-ci/steam-deploy
 
 I will try to have all infos on this page and else i will directly point to external sources via link.
 
