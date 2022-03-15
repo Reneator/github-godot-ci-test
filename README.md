@@ -119,6 +119,11 @@ now by clicking on the link in the green you should now have your game start via
 
 This Part is about having stuff/tricks out of order that you can use or are good to know.
 
+## fine-tuning in the workflow file
+
+What defines the godot version at which the export happens are the `EXPORT_VERSION` value which defines the Version of template the godot-ci container will use and also the version of the container itself (which you can see at what comes after the `@`)
+
+
 ## one of the exports fail with "cannot find on path X
 
 The godot exports (export-windows etc.) are currently set up for projects where your game-project is located in the root of your repository. If not you would have to move into those before executing the ´godot -v --export´ command via `cd X` (X for the name of the folder)
