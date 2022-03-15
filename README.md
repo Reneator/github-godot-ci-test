@@ -29,7 +29,7 @@ It will then use the previously configured infos in the Github Secrets, to login
 to understand which depot you defined in your steam application will use which folder. The order is defined by the order you have set for those depots in steam (will add how to for this)
 
 
-## Step by Step
+# Step by Step
 
 The following introduction will assume you already have your project uploaded to github and the exports are working. If there is interest i will make a step by step tutorial for that as well. So that full beginners in things CI/Git could utilize this.
 
@@ -42,7 +42,7 @@ then "set up a workflow yourself":
 
 ![image](https://user-images.githubusercontent.com/24807557/158434226-0f0031b7-15a6-4457-b6ac-a3a9414051c0.png)
 
-![image](https://user-images.githubusercontent.com/24807557/158434437-409c26cd-8e6c-4900-a871-7b27f2248fc6.png)
+![image](https://user-images.githubusercontent.com/24807557/158436148-9546f114-8331-4389-b0af-9e18b96b47c5.png)
 In this view you can now replace the text with the contents of this [File](https://github.com/Reneator/github-godot-ci-test/blob/master/.github/workflows/blank.yml)
 
 When you are done press on "commit" on the top right and select the options that fit best for you. You can potentially just click "commit new file"
@@ -50,15 +50,36 @@ When you are done press on "commit" on the top right and select the options that
 Try to change/replace the values that have the `[CHANGE ME]` behind them. The rest should then work as is, when you have added the necessary github secrets.
 Try not to change anything else unless you know what you are doing.
 
-The way the workflow file is now set up, it will trigger a build whenever you push a tag. You can adapt/change this in the first 6 lines:
-Read https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions for reference
+The way the workflow file is now set up, it will trigger a build whenever you push a tag. You can adapt/change this in the first 6 lines to react to pushes directly, only trigger in specific branches etc. For this you might need to set up multiple files if you for example want to have a different Branch in git push to a different branch in steam. (Im personally doing this via tags)
+Read https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions for reference on the github actions syntax used in the .yml file
 
 
-## 
+## Test the workflow
+
+Now test if the workflow is set up correctly. The exports should now work correctly at least. The steam deploy we will set up in later steps.
+
+It should then look something like this (depends on the size of the game as well)
+
+![image](https://user-images.githubusercontent.com/24807557/158437500-b924971c-4048-4ef1-a6e6-4b797f36c5ac.png)
+
+You can find the created artifacts when you scroll down and download and test them directly.
+
+In this screen on clicking on a job you can also get more indepth information of what is happening or what went wrong as this directly prints the output on those containers.
+
+## Set up Steam credentials in github secrets to deploy to steam
 
 
 
-### Addendum
+## Set up Github pages
+
+When you are using the Web Export you should now have a new branch called `gh-pages`. The files in this branch will be used to host the godot game to your personal github.io url.
+First you have to activate the github pages in the repository itself. You can do this in the settings:
+![image](https://user-images.githubusercontent.com/24807557/158438116-d3a00e4a-cb30-48b9-aa83-0884c6189b9b.png)
+
+now by clicking on the link in the green you should now have your game start via html5
+
+
+# Addendum
 
 This Part is about having stuff/tricks out of order that you can use or are good to know.
 
@@ -145,4 +166,4 @@ This works for me, because im working on one branch (solo developer) and mostly 
 
 ### my build fails with "cannot find on path X
 
-The build files are made for projects where your game-project is located in the root of your repository. If not, you will have to change some commands around, switching to the respective project folder.
+The godot exports (export-windows etc.) are currently set up for projects where your game-project is located in the root of your repository. If not you would have to move into those before executing the ´godot -v --export´ command via `cd X` (X for the name of the folder)
