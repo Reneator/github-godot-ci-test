@@ -53,6 +53,8 @@ Try not to change anything else unless you know what you are doing.
 The way the workflow file is now set up, it will trigger a build whenever you push a tag. You can adapt/change this in the first 6 lines to react to pushes directly, only trigger in specific branches etc. For this you might need to set up multiple files if you for example want to have a different Branch in git push to a different branch in steam. (Im personally doing this via tags)
 Read https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions for reference on the github actions syntax used in the .yml file
 
+The workflow is now set up for the deploySteam to only launch when the windows, max and linux export were successful. If you dont need one of those you can just delete the step and delete it from the `needs` array in the "Deploy to Steam" step
+
 
 ## Test the workflow
 
@@ -68,6 +70,33 @@ In this screen on clicking on a job you can also get more indepth information of
 
 ## Set up Steam credentials in github secrets to deploy to steam
 
+Github Secrets are a way to save sensitive information without the risk of leaking them. When the data is printed its always encrypted and you can only change the info or remove it but never read/get those values visible.
+
+You can find the secrets here and when you are done it should look like this:
+
+![image](https://user-images.githubusercontent.com/24807557/158439397-ade0fa7c-3dbc-4268-96a1-5e4da4eb1304.png)
+
+To get all the necessary informations, try to use this step by step:
+https://github.com/game-ci/steam-deploy#configuration
+
+Tell me if it uses too much implicit information, then i can make a more detailed explanation.
+
+Regarding the "Encode to base64" im on windows and to do that i just use Notepad++ which has a default extension that allows you to do the Base64 Encoding
+
+This mainly affects the config.vdf and the ssfn file content:
+- Open the file with Notepad++
+- Select all the text (ctrl+A)
+- Then in the top line choose Extensions->Mime tools -> Base64 Encode
+- Now you can just copy the generated text and put it into the correspondig steam secret
+
+If you have those set up, the steam deploy should work correctly and you should see the build in your partner.steamgames.com Builds of your app.
+
+### Parts where it could break:
+
+- Building depots: Check if you have the proper installations in your steam app and namings active double check with the build file. The value after the `depotXPath` is just the folder that steamcmd is supposed to use to build for the depot
+- `depotXPath` as far as i understood it, the Number for X defines which depot will use which folder and here it depends on the order of the depots you have defined in your steamapp.
+- Check if you actually have created the Branch in your steam app, as the deployToSteam job does not create a branch and will just throw an error if it doesnt exist.
+- To invite a builder account to your project/organization you will have to on one side invite the account to the project, accept it on the builder account email, but then also approve it again on your admin account for that steam app.
 
 
 ## Set up Github pages
@@ -83,49 +112,9 @@ now by clicking on the link in the green you should now have your game start via
 
 This Part is about having stuff/tricks out of order that you can use or are good to know.
 
-##
+## one of the exports fail with "cannot find on path X
 
-
-
-
-## Set up your project
-
-In your project you need to have to have created the exports you want to use. The name of those export-settings defining the name you have to use in the yml file.
-
-
-## Set up your required steam-data:
-used parts of the description from here:
-https://github.com/game-ci/steam-deploy#3-configure-for-deployment
-
-## Set up your repository to deploy to steam:
-follow the readme on the specific github-action itself: https://github.com/game-ci/steam-deploy
-
-In the github action's yml, replace the releaseBranch and the appId with those of your own game.
-
-If steam doesnt find the proper executables, you might have to check on your "Installation" on steam partner:  https://partner.steamgames.com
-
-It will then use the previously configured infos in the Github Secrets, to login and use the 
-```
-          depot1Path: windows
-          depot2Path: linux
-          depot4Path: mac
-```
-
-to understand which depot you defined in your steam application will use which folder. As far as i understood it, the order is defined by the order you have set for those depots in steam
-
-
-## Set up Steam to work properly
-
-To deploy to a branch on steam the branch must already exist. The Branch wont be created and you will receive an error-message
-
-
-## Set up your Github action
-
-
-## Set up github pages for your repository
-
-
-## How does the process work step by step?
+The godot exports (export-windows etc.) are currently set up for projects where your game-project is located in the root of your repository. If not you would have to move into those before executing the ´godot -v --export´ command via `cd X` (X for the name of the folder)
 
 ## Deploy to different steam branches
 I currently have this working by creating an additional workflow script, copy the content of the other script and change the tag
@@ -162,8 +151,5 @@ This works for me, because im working on one branch (solo developer) and mostly 
 - Deploy to itch.io
 - provide different templates, which are pushing to different branches depending on your current branches etc.
 
-## FAQ
 
-### my build fails with "cannot find on path X
 
-The godot exports (export-windows etc.) are currently set up for projects where your game-project is located in the root of your repository. If not you would have to move into those before executing the ´godot -v --export´ command via `cd X` (X for the name of the folder)
